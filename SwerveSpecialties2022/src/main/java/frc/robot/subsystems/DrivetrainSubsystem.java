@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.sensors.PigeonIMU;
 import com.kauailabs.navx.frc.AHRS;
 import com.swervedrivespecialties.swervelib.Mk3SwerveModuleHelper;
+import com.swervedrivespecialties.swervelib.Mk4ModuleConfiguration;
 import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.SdsModuleConfigurations;
 import com.swervedrivespecialties.swervelib.SwerveModule;
@@ -42,8 +43,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
    * This is a measure of how fast the robot should be able to drive in a straight line.
    */
   public static final double MAX_VELOCITY_METERS_PER_SECOND = 6380.0 / 60.0 *
-          SdsModuleConfigurations.MK3_STANDARD.getDriveReduction() *
-          SdsModuleConfigurations.MK3_STANDARD.getWheelDiameter() * Math.PI;
+          SdsModuleConfigurations.MK4_L1.getDriveReduction() *
+          SdsModuleConfigurations.MK4_L1.getWheelDiameter() * Math.PI;
   /**
    * The maximum angular velocity of the robot in radians per second.
    * <p>
@@ -104,6 +105,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     // you MUST change it. If you do not, your code will crash on startup.
     // FIXME Setup motor configuration
     //m_frontLeftModule = Mk3SwerveModuleHelper.createFalcon500(
+            
         m_frontLeftModule = Mk4SwerveModuleHelper.createNeo(
             // This parameter is optional, but will allow you to see the current state of the module on the dashboard.
             tab.getLayout("Front Left Module", BuiltInLayouts.kList)
