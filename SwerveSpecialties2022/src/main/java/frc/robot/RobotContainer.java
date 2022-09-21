@@ -83,7 +83,7 @@ public class RobotContainer {
 
   private static double modifyAxis(double value) {
     // Deadband
-    value = deadband(value, 0.05);
+    value = deadband(value, 0.085);
 
     // Square the axis
     value = Math.copySign(value * value, value);
