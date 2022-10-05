@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
+import com.ctre.phoenix.sensors.Pigeon2;
 import com.ctre.phoenix.sensors.PigeonIMU;
 import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.PathPlanner;
@@ -37,7 +38,8 @@ import frc.robot.subsystems.DrivetrainSubsystem;
 public class RobotContainer {
   private final XboxController driver = new XboxController(0);
 
-  private final PigeonIMU pigeonGyro = new PigeonIMU(Constants.DRIVETRAIN_PIGEON_ID);
+
+  private final Pigeon2 pigeonGyro = new Pigeon2(Constants.DRIVETRAIN_PIGEON_ID);
 
   private final DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem(pigeonGyro);
 

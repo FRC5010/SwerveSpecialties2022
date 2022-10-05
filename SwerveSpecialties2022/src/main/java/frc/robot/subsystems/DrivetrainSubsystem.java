@@ -21,6 +21,7 @@ import static frc.robot.Constants.FRONT_RIGHT_MODULE_STEER_ENCODER;
 import static frc.robot.Constants.FRONT_RIGHT_MODULE_STEER_MOTOR;
 import static frc.robot.Constants.FRONT_RIGHT_MODULE_STEER_OFFSET;
 
+import com.ctre.phoenix.sensors.Pigeon2;
 import com.ctre.phoenix.sensors.PigeonIMU;
 import com.swervedrivespecialties.swervelib.Mk4iSwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.SdsModuleConfigurations;
@@ -48,7 +49,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         
   SwerveDriveKinematics m_kinematics = Constants.m_kinematics;
 
-  private final PigeonIMU m_pigeon;
+  private final Pigeon2 m_pigeon;
 
   private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(Constants.m_kinematics, new Rotation2d(0));
   private final SwerveModule m_frontLeftModule;
@@ -58,7 +59,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   private ChassisSpeeds m_chassisSpeeds = new ChassisSpeeds(0.0, 0.0, 0.0);
 
-  public DrivetrainSubsystem(PigeonIMU m_pigeon) {
+  public DrivetrainSubsystem(Pigeon2 m_pigeon) {
     ShuffleboardTab tab = Shuffleboard.getTab("Drivetrain");
 
     this.m_pigeon = m_pigeon;
@@ -118,11 +119,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void zeroGyroscope() {
-    m_pigeon.setFusedHeading(0.0);
+    m_pigeon.setYaw(0.0);
   }
 
   public Rotation2d getGyroscopeRotation() {
-    return Rotation2d.fromDegrees(m_pigeon.getFusedHeading());
+    return Rotation2d.fromDegrees(m_pigeon.getYaw());
   }
 
   public Pose2d getPose2d(){
