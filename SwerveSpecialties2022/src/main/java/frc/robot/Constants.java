@@ -21,6 +21,11 @@ public final class Constants {
     public static final double DRIVETRAIN_TRACKWIDTH_METERS = 0.76835;
     public static final double DRIVETRAIN_WHEELBASE_METERS = 0.635;
 
+
+    public static final double drivingP = 0.15315;
+
+    public static final double turningP = 0.046496;
+
     public static final double MAX_VELOCITY_METERS_PER_SECOND = 6380.0 / 60.0 *
     SdsModuleConfigurations.MK4I_L1.getDriveReduction() *
     SdsModuleConfigurations.MK4I_L1.getWheelDiameter() * Math.PI;

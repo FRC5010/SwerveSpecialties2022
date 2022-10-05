@@ -4,26 +4,18 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.I2C.Port;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-
 import com.ctre.phoenix.sensors.Pigeon2;
-import com.ctre.phoenix.sensors.PigeonIMU;
-import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
-import com.pathplanner.lib.commands.PPSwerveControllerCommand;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.FunctionalCommand;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import frc.robot.commands.DefaultDriveCommand;
@@ -46,9 +38,9 @@ public class RobotContainer {
   private SendableChooser<PathPlannerTrajectory> autoPicker = new SendableChooser<>();
 
   public RobotContainer() {
-    autoPicker.addOption("DriveSquareAndTurn", getPathFromPathPlanner("DriveSquareAndTurn"));
+    //autoPicker.addOption("DriveSquareAndTurn", getPathFromPathPlanner("DriveSquareAndTurn"));
     autoPicker.addOption("DriveLine", getPathFromPathPlanner("DriveLine"));
-
+    
     drivetrainSubsystem.setDefaultCommand(new DefaultDriveCommand(
             drivetrainSubsystem,
             () -> -modifyAxis(driver.getLeftY()) * Constants.MAX_VELOCITY_METERS_PER_SECOND,
@@ -71,10 +63,10 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     Trajectory pickedPath = autoPicker.getSelected();
 
-    PIDController xController = new PIDController(1, 0, 0);
-    PIDController yController = new PIDController(1, 0, 0);
+    PIDController xController = new PIDController(Constants.drivingP, 0, 0);
+    PIDController yController = new PIDController(Constants.drivingP, 0, 0);
 
-    ProfiledPIDController thetaController = new ProfiledPIDController(1, 0, 0, new TrapezoidProfile.Constraints(Constants.MAX_VELOCITY_METERS_PER_SECOND, 3*Math.PI));
+    ProfiledPIDController thetaController = new ProfiledPIDController(Constants.turningP, 0, 0, new TrapezoidProfile.Constraints(Constants.MAX_VELOCITY_METERS_PER_SECOND, Constants.MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND));
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
     SwerveControllerCommand autoCommand = new SwerveControllerCommand(
