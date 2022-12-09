@@ -47,6 +47,26 @@ public final class Constants {
           new Translation2d(-DRIVETRAIN_TRACKWIDTH_METERS / 2.0, -DRIVETRAIN_WHEELBASE_METERS / 2.0)
   );
 
+  public static final double ELEVATOR_MAX_RPM = 100;
+
+  public static final double ELEVATOR_MAX_HEIGHT = 10.0;
+  public static final double ELEVATOR_MIN_HEIGHT = 0.0;
+
+  public static final double ELEVATOR_kP = 0.0;
+  public static final double ELEVATOR_kI = 0.0;
+  public static final double ELEVATOR_kD = 0.0;
+  public static final double ELEVATOR_kS = 0.0;
+  public static final double ELEVATOR_kV = 0.0;
+  public static final double ELEVATOR_kA = 0.0;
+  public static final double ELEVATOR_kG = 0.0;
+
+  public static final double ELEVATOR_Min = 0.0;
+  public static final double ELEVATOR_Max = 10.0;
+
+  //public static final double ELEVATOR_FEEDFORWARD = 0.0;
+
+  public static final double ELEVATOR_SPROKET_RADIUS = 1.0;
+  
 
     public static final int DRIVETRAIN_PIGEON_ID = 0;
 
@@ -69,4 +89,7 @@ public final class Constants {
     public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 8;
     public static final int BACK_RIGHT_MODULE_STEER_ENCODER = 9;
     public static final double BACK_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(89.29); //
+
+    public static final int LEFT_ELEVATOR_MOTOR = 13;
+    public static final int RIGHT_ELEVATOR_MOTOR = 14;
 }
