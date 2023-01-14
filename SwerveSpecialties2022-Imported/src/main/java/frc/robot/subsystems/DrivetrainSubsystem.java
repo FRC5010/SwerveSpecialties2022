@@ -131,7 +131,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         new SwerveModulePosition(0, new Rotation2d(Units.radiansToDegrees(this.m_backRightModule.getSteerAngle())))
       };
 
-      odometer = new SwerveDriveOdometry(Constants.m_kinematics, new Rotation2d(0), modulePositions);
+      this.odometer = new SwerveDriveOdometry(Constants.m_kinematics, new Rotation2d(0), modulePositions);
   }
 
   public void zeroGyroscope() {

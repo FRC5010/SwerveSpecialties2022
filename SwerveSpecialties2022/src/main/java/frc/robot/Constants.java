@@ -32,8 +32,8 @@ public final class Constants {
     public static final double MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND = MAX_VELOCITY_METERS_PER_SECOND /
     Math.hypot(DRIVETRAIN_TRACKWIDTH_METERS / 2.0, DRIVETRAIN_WHEELBASE_METERS / 2.0);
 
-    public static final double MAX_ACCELERATION_METERS_PER_SEC_PER_SEC = MAX_VELOCITY_METERS_PER_SECOND/1;
-    public static final double MAX_ANGULAR_ACCELERTATION_RADIANS_PER_SEC_PER_SEC = MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND/1;
+    public static final double MAX_ACCELERATION_METERS_PER_SEC_PER_SEC = MAX_VELOCITY_METERS_PER_SECOND/.400;
+    public static final double MAX_ANGULAR_ACCELERTATION_RADIANS_PER_SEC_PER_SEC = MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND/.185;
 
 
     public static final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(
@@ -69,4 +69,9 @@ public final class Constants {
     public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 8;
     public static final int BACK_RIGHT_MODULE_STEER_ENCODER = 9;
     public static final double BACK_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(89.29); //
+
+    public static final int LEFT_ELAVATOR = 13;
+    public static final int RIGHT_ELAVATOR=14;
+
+    
 }
